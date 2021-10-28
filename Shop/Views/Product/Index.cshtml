@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Shop.Models.Product.ProductListItem>
+
+@{
+    int queueNumber = 0;
+}
+
+<div class="h1">
+    Products
+</div>
+
+
+<form method="post" class="m-1">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nr</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Weight</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                queueNumber+= 1;
+
+                <tr>
+                    <th scope="row">@queueNumber</th>
+                    <td class="">@product.Name</td>
+                    <td class="">@product.Description</td>
+                    <td class="">@product.Value</td>
+                    <td class="">@product.Weight</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</form>
