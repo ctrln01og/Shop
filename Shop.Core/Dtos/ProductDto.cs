@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Shop.Models.Product
+
+namespace Shop.Core.Dtos
 {
-    public class ProductViewModel
+    public class ProductDto
     {
         public Guid? Id { get; set; }
         public string Name { get; set; }
@@ -14,6 +12,5 @@ namespace Shop.Models.Product
         public double Weight { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime ModifiedAt { get; set; }
-
     }
 }
