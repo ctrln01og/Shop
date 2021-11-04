@@ -37,5 +37,12 @@ namespace Shop.Controllers
 
             return View(result);
         }
+
+        public IActionResult Add()
+        {
+
+
+            return View();
+        }
     }
 }
