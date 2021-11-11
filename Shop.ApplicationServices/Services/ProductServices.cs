@@ -39,5 +39,17 @@ namespace Shop.ApplicationServices.Services
             return product;
         }
 
+
+        public async Task<Product> Delete(Guid id)
+        {
+            var productId = await _context.Product
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            _context.Product.Remove(productId);
+            await _context.SaveChangesAsync();
+
+            return productId;
+        }
+
     }
 }

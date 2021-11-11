@@ -74,5 +74,13 @@ namespace Shop.Controllers
 
             return RedirectToAction("Index", model);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

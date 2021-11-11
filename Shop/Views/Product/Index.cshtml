@@ -35,6 +35,9 @@
                     <td class="">@product.Description</td>
                     <td class="">@product.Value</td>
                     <td class="">@product.Weight</td>
+                    <td class="">
+                        <input asp-action="delete" asp-controller="product" asp-route-id="@product.Id" type="submit" class="btn btn-danger" value="Delete">
+                    </td>
                 </tr>
             }
         </tbody>

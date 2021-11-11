@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Shop.Core.ServiceInterface;
+using Shop.ApplicationServices.Services;
 
 namespace Shop
 {
@@ -29,6 +31,9 @@ namespace Shop
             services.AddDbContext<ShopDbContext>(options =>
             options.UseSqlServer(_configuration["DefaultConnection"]));
 
+
+
+            services.AddScoped<IProductService, ProductServices>();
 
             services.AddControllersWithViews();
         }
