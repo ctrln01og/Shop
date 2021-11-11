@@ -13,16 +13,16 @@ namespace Shop.Controllers
     public class ProductController : Controller
     {
         private readonly ShopDbContext _context;
-        private readonly IProductService _product;
+        private readonly IProductService _productService;
 
         public ProductController
             (
             ShopDbContext context,
-            IProductService product
+            IProductService productService
             )
         {
             _context = context;
-            _product = product;
+            _productService = productService;
         }
 
         //ListItem
@@ -65,7 +65,7 @@ namespace Shop.Controllers
                 ModifiedAt = model.ModifiedAt
             };
 
-            var result = await _product.Add(dto);
+            var result = await _productService.Add(dto);
 
             if(result == null)
             {
@@ -78,7 +78,11 @@ namespace Shop.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Guid id)
         {
-
+            var product = await _productService.Delete(id);
+            if (product == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
 
             return RedirectToAction(nameof(Index));
         }
