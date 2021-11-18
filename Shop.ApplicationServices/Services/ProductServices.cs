@@ -51,5 +51,30 @@ namespace Shop.ApplicationServices.Services
             return productId;
         }
 
+
+        public async Task<Product> Update(ProductDto dto)
+        {
+            Product product = new Product();
+
+            product.Id = dto.Id;
+            product.Name = dto.Name;
+            product.Description = dto.Description;
+            product.Value = dto.Value;
+            product.Weight = dto.Weight;
+            product.CreatedAt = dto.CreatedAt;
+            product.ModifiedAt = DateTime.Now;
+
+            _context.Product.Update(product);
+            await _context.SaveChangesAsync();
+            return product;
+        }
+
+        public async Task<Product> GetAsync(Guid id)
+        {
+            var result = await _context.Product
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            return result;
+        }
     }
 }
