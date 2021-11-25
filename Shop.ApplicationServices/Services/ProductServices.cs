@@ -76,5 +76,15 @@ namespace Shop.ApplicationServices.Services
 
             return result;
         }
+
+        public string ProcessUploadFile(ProductDto dto, Product product)
+        {
+            string uniqueFileName = null;
+
+            if(dto.Files != null && dto.Files.Count > 0)
+            {
+
+            }
+        }
     }
 }

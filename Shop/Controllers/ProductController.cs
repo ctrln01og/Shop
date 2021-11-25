@@ -110,5 +110,29 @@ namespace Shop.Controllers
 
             return View(model);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(ProductViewModel model)
+        {
+            var dto = new ProductDto()
+            {
+                Id = model.Id,
+                Description = model.Description,
+                Name = model.Name,
+                Value = model.Value,
+                Weight = model.Weight,
+                CreatedAt = model.CreatedAt,
+                ModifiedAt = model.ModifiedAt
+            };
+
+            var result = await _productService.Update(dto);
+
+            if (result == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return RedirectToAction(nameof(Index), model);
+        }
     }
 }
